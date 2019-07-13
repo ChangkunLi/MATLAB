@@ -1,7 +1,7 @@
 N = input("How many satellite files do you want to merge in one time?\n");
 index = zeros(N,1);
 for i = 1:N
-   index(i) = input(['Inout index(' num2str(i) ')\n']); 
+   index(i) = input(['Input index(' num2str(i) ')\n']); 
 end
 
 Name = cell(N,1);
@@ -13,7 +13,11 @@ N_sat = max(size(Name{1}));
 
 for j = 1:N_sat
     for i = 2:N
-       sat_cat(Name{1}(j).name,Name{i}(j).name); 
+        if Name{i}(j).bytes == 0
+            system(['rm ' Name{i}(j).name]);
+        else
+            sat_cat(Name{1}(j).name,Name{i}(j).name); 
+        end
     end
 end
 
