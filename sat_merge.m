@@ -1,3 +1,5 @@
+clear;
+
 N = input("How many satellite files do you want to merge in one time?\n");
 index = zeros(N,1);
 for i = 1:N
@@ -54,7 +56,7 @@ function sat_cat(sat_1,sat_2)
     data_2 = reshape(data_2,[total_2/Nt_2,Nt_2]);
     
     for i = 1:Nt_2
-       if data_1(1,end) == data_2(1,i)
+       if data_1(9,end) == data_2(9,i) || data_1(1,end) == data_2(1,i)
            num_deleted_line = i + 2;  % Plus 2 lines of header
            break;
        end
