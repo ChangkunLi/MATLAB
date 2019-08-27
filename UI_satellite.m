@@ -198,7 +198,7 @@ function h15_callback(~,~)
                 tag = ['x=' num2str(Locations{i}(1)) ' y=' num2str(Locations{i}(2)) ' z=' num2str(Locations{i}(3))];
                 plot(DATA{i}(Dict('t'),:),DATA{i}(Dict(VAR_str(j)),:),'DisplayName',tag,'LineWidth',3);
                 if i == 1
-                    ylabel(strcat(VAR_str(j) , '(', Unit(VAR_str(j)) , ')'));
+                    ylabel(strcat(VAR_str(j) , '(', Unit(VAR_str(j)) , ')'),'FontSize',22);
                 end
                 hold on;
             end
@@ -206,10 +206,14 @@ function h15_callback(~,~)
 
         for j = 1:N_var
             subplot(N_var,1,j);
-            legend;
+            if j == N_var  % Show legend in N_var(th) subplot, you can change this number as you wish
+                legend;
+            end
             X_lim = xlim;
             vl = vline(X_lim(1) + (X_lim(2) - X_lim(1))*(K-1)/(N_png-1),'k');
             set(vl,'LineWidth',3);
+            ax = gca;
+            ax.FontSize = 20;
         end
 
         filename = sprintf('%4.4d.png', K);
