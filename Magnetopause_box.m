@@ -136,10 +136,11 @@ for i = 1:N_output
     handle = figure('Position',[0,0,w,h]);
     contourf(yq,zq,bN,50,'Linestyle','none'); colorbar;
     axis tight equal
-    set(gca,'Xdir','reverse')
     caxis([-40 40])
-    xlabel('y [R_G]'); ylabel('z [R_G]');
-    title(['B_N [nT], ' time]);
+    xlabel('y [R_G]','FontSize',40); ylabel('z [R_G]','FontSize',40);
+    title(['B_N [nT], ' time],'FontSize',40);
+    ax = handle.CurrentAxes;
+    ax.FontSize = 40;
     
     filename = sprintf('%4.4d.png', i);
     saveas(handle,['Two_D_magnetopause/' filename]);
