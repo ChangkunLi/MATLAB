@@ -527,7 +527,7 @@ function h15_callback(~,~)
             vl = vline(X_lim(1) + (X_lim(2) - X_lim(1))*(K-1)/(N_png-1),'k');
             set(vl,'LineWidth',3);
             ax = gca;
-            ax.FontSize = 20;
+            ax.FontSize = 20; % The fontsize of tick label
         end
 
         filename = sprintf('%4.4d.png', K);

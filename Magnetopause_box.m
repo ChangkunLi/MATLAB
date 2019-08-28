@@ -140,7 +140,7 @@ for i = 1:N_output
     xlabel('y [R_G]','FontSize',40); ylabel('z [R_G]','FontSize',40);
     title(['B_N [nT], ' time],'FontSize',40);
     ax = handle.CurrentAxes;
-    ax.FontSize = 40;
+    ax.FontSize = 40;   % The fontsize of tick label
     
     filename = sprintf('%4.4d.png', i);
     saveas(handle,['Two_D_magnetopause/' filename]);
