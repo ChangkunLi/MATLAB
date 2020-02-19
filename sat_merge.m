@@ -8,7 +8,7 @@ end
 
 Name = cell(N,1);
 for i = 1:N
-   Name{i} = dir(['*_n' num2str(index(i)) '.sat']); 
+   Name{i} = dir(['*_n*' num2str(index(i)) '.sat']); 
 end
 
 N_sat = max(size(Name{1}));
@@ -56,6 +56,10 @@ function sat_cat(sat_1,sat_2)
     data_2 = reshape(data_2,[total_2/Nt_2,Nt_2]);
     
     for i = 1:Nt_2
+       if data_1(1,end) < data_2(1,1)
+           num_deleted_line = 2;
+           break;
+       end  
        if data_1(9,end) == data_2(9,i) || data_1(1,end) == data_2(1,i)
            num_deleted_line = i + 2;  % Plus 2 lines of header
            break;
